@@ -29,7 +29,6 @@ private async compute() {
   this.doLog("compute() x = " + this.x);
 };
 `;
-
     this.solutionUrl = 'https://www.youtube.com/watch?v=bfxglBVSNDI&list=WL&index=70&t=0s';
     this.solution = `compute() x = 2
 run() x = 3
@@ -42,9 +41,7 @@ that will be executed as a micro task as soon as the call stack is empty.
 `;
   }
 
-  public async run(doLog: (string) => void) {
-    this.doLog = doLog;
-
+  public async run() {
     this.x = 0;
     await this.compute();
     this.x += 1;

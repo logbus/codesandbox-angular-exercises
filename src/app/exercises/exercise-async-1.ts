@@ -51,9 +51,7 @@ private async compute(): Promise<any> {
 `;
   }
 
-  public run(doLog: (string) => void) {
-    this.doLog = doLog;
-
+  public run() {
     this.x = 0;
     this.compute();
     this.x += 1;

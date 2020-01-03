@@ -9,6 +9,7 @@ import { Exercise } from '../exercises/exercise';
 export class ExerciseComponent {
   @Input() public set currentExercise(newExercise: Exercise) {
     this.exercise = newExercise;
+    this.exercise.doLog = this.doLog.bind(this);
     this.showSolution = false;
     this.logs = [];
   }
@@ -29,6 +30,6 @@ export class ExerciseComponent {
 
   public runExercise() {
     this.logs = [];
-    this.exercise.run(this.doLog.bind(this));
+    this.exercise.run();
   }
 }
