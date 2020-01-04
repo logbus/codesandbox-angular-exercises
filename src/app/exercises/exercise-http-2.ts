@@ -6,25 +6,26 @@ export class ExerciseHttp2 extends Exercise {
 
   public constructor() {
     super();
-    this.name = 'Http-2';
+    this.name = 'Http-2-Slow';
     this.question = 'What is logged when you call the run() method?';
     this.info = `
 This exercise uses an http simulator that simulates an http call.
-Every httpGet() call return without error after 2000ms delay.
+Every httpGet() call returns without error after 2000ms delay.
 `;
     this.infoUrl = null;
     this.infoUrlName = null;
-    this.code = `async public run() {
+    this.code = `  public async run() {
   const start = Date.now();
   this.doLog('httpGet(url-1) running...');
-  await HttpSimulator.httpGet('url-1')
-    .then(data => this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data));
+  const data1 = await HttpSimulator.httpGet('url-1');
+  this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data1);
   this.doLog('httpGet(url-2) running...');
-  await HttpSimulator.httpGet('url-2')
-    .then(data => this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data));
+  const data2 = await HttpSimulator.httpGet('url-2');
+  this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data2);
   this.doLog('httpGet(url-3) running...');
-  await HttpSimulator.httpGet('url-3')
-    .then(data => this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data));
+  const data3 = await HttpSimulator.httpGet('url-3');
+  this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data3);
+  this.doLog('processing received data');
 }
 `;
     this.solutionUrl = null;
@@ -37,19 +38,22 @@ Elapsed: 6000ms - httGet(url-3): Ok
 processing received data
 
 All http calls are running after each other resulting in 6000ms processing time
-in contrast to exercise Http-1 with only 2000ms processing time.
-==> But now we are processing the data when it is available.
+in contrast to exercise 1b with only 2000ms processing time.
+==> But we are processing the data when it is available.
 `;
   }
 
   public async run() {
     const start = Date.now();
     this.doLog('httpGet(url-1) running...');
-    await HttpSimulator.httpGet('url-1').then(data => this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data));
+    const data1 = await HttpSimulator.httpGet('url-1');
+    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data1);
     this.doLog('httpGet(url-2) running...');
-    await HttpSimulator.httpGet('url-2').then(data => this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data));
+    const data2 = await HttpSimulator.httpGet('url-2');
+    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data2);
     this.doLog('httpGet(url-3) running...');
-    await HttpSimulator.httpGet('url-3').then(data => this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data));
+    const data3 = await HttpSimulator.httpGet('url-3');
+    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data3);
     this.doLog('processing received data');
   }
 }

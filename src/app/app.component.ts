@@ -4,6 +4,8 @@ import { ExercisePromise1 } from './exercises/exercise-promise-1';
 import { ExerciseAsync1 } from './exercises/exercise-async-1';
 import { ExerciseAsync2 } from './exercises/exercise-async-2';
 import { ExerciseHttp1 } from './exercises/exercise-http-1';
+import { ExerciseHttp1a } from './exercises/exercise-http-1a';
+import { ExerciseHttp1b } from './exercises/exercise-http-1b';
 import { ExerciseHttp2 } from './exercises/exercise-http-2';
 import { ExerciseHttp3 } from './exercises/exercise-http-3';
 
@@ -18,6 +20,8 @@ export class AppComponent {
     new ExerciseAsync1(),
     new ExerciseAsync2(),
     new ExerciseHttp1(),
+    new ExerciseHttp1a(),
+    new ExerciseHttp1b(),
     new ExerciseHttp2(),
     new ExerciseHttp3()
   ];

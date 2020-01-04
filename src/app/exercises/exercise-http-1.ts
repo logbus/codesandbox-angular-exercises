@@ -6,11 +6,11 @@ export class ExerciseHttp1 extends Exercise {
 
   public constructor() {
     super();
-    this.name = 'Http-1';
+    this.name = 'Http-1-Wrong';
     this.question = 'What is logged when you call the run() method?';
     this.info = `
 This exercise uses an http simulator that simulates an http call.
-Every httpGet() call return without error after 2000ms delay.
+Every httpGet() call returns without error after 2000ms delay.
 `;
     this.infoUrl = null;
     this.infoUrlName = null;
@@ -38,7 +38,7 @@ Elapsed: 2000ms - httGet(url-2): Ok
 Elapsed: 2000ms - httGet(url-3): Ok
 
 All http calls are running in parallel and return after aprox. 2000ms.
-==> But oops we are processing data before it arrived!
+==> But OOPS we are processing data before it arrived!
 `;
   }
 
