@@ -14,7 +14,7 @@ Every httpGet() call returns without error after 2000ms delay.
 `;
     this.infoUrl = null;
     this.infoUrlName = null;
-    this.code = `  public async run() {
+    this.code = `public async run() {
   const start = Date.now();
   this.doLog('httpGet(url-1) running...');
   const data1 = await HttpSimulator.httpGet('url-1');

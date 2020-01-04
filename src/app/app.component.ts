@@ -8,6 +8,7 @@ import { ExerciseHttp1a } from './exercises/exercise-http-1a';
 import { ExerciseHttp1b } from './exercises/exercise-http-1b';
 import { ExerciseHttp2 } from './exercises/exercise-http-2';
 import { ExerciseHttp3 } from './exercises/exercise-http-3';
+import { ExerciseHttp4 } from './exercises/exercise-http-4';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent {
     new ExerciseHttp1a(),
     new ExerciseHttp1b(),
     new ExerciseHttp2(),
-    new ExerciseHttp3()
+    new ExerciseHttp3(),
+    new ExerciseHttp4()
   ];
   public currentExercise: Exercise;
 }

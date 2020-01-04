@@ -1,16 +1,17 @@
 import { Exercise } from './exercise';
 import { HttpSimulator } from './http-simulator';
 
-export class ExerciseHttp3 extends Exercise {
+export class ExerciseHttp4 extends Exercise {
   private x: number;
 
   public constructor() {
     super();
-    this.name = 'Http-3-Best';
+    this.name = 'Http-4-Error-1';
     this.question = 'What is logged when you call the run() method?';
     this.info = `
 This exercise uses an http simulator that simulates an http call.
 Every httpGet() call returns without error after 2000ms delay.
+Every httpGetWithError() call returns with error after 2000ms delay.
 `;
     this.infoUrl = null;
     this.infoUrlName = null;
@@ -18,8 +19,8 @@ Every httpGet() call returns without error after 2000ms delay.
   const start = Date.now();
   this.doLog('httpGet(url-1) running...');
   const data1 = HttpSimulator.httpGet('url-1');
-  this.doLog('httpGet(url-2) running...');
-  const data2 = HttpSimulator.httpGet('url-2');
+  this.doLog('httpGetError(url-2) running...');
+  const data2 = HttpSimulator.httpGetWithError('url-2');
   this.doLog('httpGet(url-3) running...');
   const data3 = HttpSimulator.httpGet('url-3');
   await Promise.all([data1, data2, data3]);
@@ -31,15 +32,14 @@ Every httpGet() call returns without error after 2000ms delay.
 `;
     this.solutionUrl = null;
     this.solution = `httpGet(url-1) running...
-httpGet(url-2) running...
+httpGetError(url-2) running...
 httpGet(url-3) running...
-Elapsed: 2000ms - httGet(url-1): Ok
-Elapsed: 2000ms - httGet(url-2): Ok
-Elapsed: 2000ms - httGet(url-3): Ok
-processing received data
 
-All http calls are running in parallel with only 2000ms total processing time.
-==> We process the data when all data has arrived and the code looks best compared with all versions!
+==> An uncaught error is listed in the console:
+ERROR Error: Uncaught (in promise): Error: httGet: Error 500
+Error: httGet: Error 500
+    at new HttpError (https://gc7el.csb.app/src/app/exercises/http-simulator.ts:32:42)
+    ...
 `;
   }
 
@@ -47,8 +47,8 @@ All http calls are running in parallel with only 2000ms total processing time.
     const start = Date.now();
     this.doLog('httpGet(url-1) running...');
     const data1 = HttpSimulator.httpGet('url-1');
-    this.doLog('httpGet(url-2) running...');
-    const data2 = HttpSimulator.httpGet('url-2');
+    this.doLog('httpGetError(url-2) running...');
+    const data2 = HttpSimulator.httpGetWithError('url-2');
     this.doLog('httpGet(url-3) running...');
     const data3 = HttpSimulator.httpGet('url-3');
     await Promise.all([data1, data2, data3]);
