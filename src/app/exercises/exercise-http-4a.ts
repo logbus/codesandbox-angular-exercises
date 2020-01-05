@@ -18,20 +18,25 @@ Every httpGetWithError() call returns with error after 2000ms delay.
     this.code = `public async run() {
   const start = Date.now();
   try {
-    this.doLog('httpGet(url-1) running...');
-    const data1 = HttpSimulator.httpGet('url-1');
-    this.doLog('httpGetError(url-2) running...');
-    const data2 = HttpSimulator.httpGetWithError('url-2');
-    this.doLog('httpGet(url-3) running...');
-    const data3 = HttpSimulator.httpGet('url-3');
-    await Promise.all([data1, data2, data3]);
-    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data1);
-    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data2);
-    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data3);
-    this.doLog('processing received data');
+    await this.doCalls();
   } catch (err) {
     this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + err);
   }
+}
+
+public async doCalls() {
+  const start = Date.now();
+  this.doLog('httpGet(url-1) running...');
+  const data1 = HttpSimulator.httpGet('url-1');
+  this.doLog('httpGetError(url-2) running...');
+  const data2 = HttpSimulator.httpGetWithError('url-2');
+  this.doLog('httpGet(url-3) running...');
+  const data3 = HttpSimulator.httpGet('url-3');
+  await Promise.all([data1, data2, data3]);
+  this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data1);
+  this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data2);
+  this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data3);
+  this.doLog('processing received data');
 }
 `;
     this.solutionUrl = null;
@@ -47,19 +52,24 @@ Elapsed: 2000ms - Error: httGet(url-2): Error 500
   public async run() {
     const start = Date.now();
     try {
-      this.doLog('httpGet(url-1) running...');
-      const data1 = HttpSimulator.httpGet('url-1');
-      this.doLog('httpGetError(url-2) running...');
-      const data2 = HttpSimulator.httpGetWithError('url-2');
-      this.doLog('httpGet(url-3) running...');
-      const data3 = HttpSimulator.httpGet('url-3');
-      await Promise.all([data1, data2, data3]);
-      this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data1);
-      this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data2);
-      this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data3);
-      this.doLog('processing received data');
+      await this.doCalls();
     } catch (err) {
       this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + err);
     }
+  }
+
+  public async doCalls() {
+    const start = Date.now();
+    this.doLog('httpGet(url-1) running...');
+    const data1 = HttpSimulator.httpGet('url-1');
+    this.doLog('httpGetError(url-2) running...');
+    const data2 = HttpSimulator.httpGetWithError('url-2');
+    this.doLog('httpGet(url-3) running...');
+    const data3 = HttpSimulator.httpGet('url-3');
+    await Promise.all([data1, data2, data3]);
+    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data1);
+    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data2);
+    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data3);
+    this.doLog('processing received data');
   }
 }

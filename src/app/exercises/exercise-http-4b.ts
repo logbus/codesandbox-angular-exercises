@@ -18,6 +18,15 @@ Every httpGetWithError() call returns with error after 2000ms delay.
     this.code = `public async run() {
   const start = Date.now();
   try {
+    await this.doCalls();
+  } catch (err) {
+    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + err);
+  }
+}
+
+public async doCalls() {
+  const start = Date.now();
+  try {
     this.doLog('httpGet(url-1) running...');
     const data1 = HttpSimulator.httpGet('url-1');
     this.doLog('httpGetError(url-2) running...');
@@ -29,8 +38,6 @@ Every httpGetWithError() call returns with error after 2000ms delay.
     this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data2);
     this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data3);
     this.doLog('processing received data');
-  } catch (err) {
-    this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + err);
   } finally {
     return;
   }
@@ -40,9 +47,10 @@ Every httpGetWithError() call returns with error after 2000ms delay.
     this.solution = `httpGet(url-1) running...
 httpGetError(url-2) running...
 httpGet(url-3) running...
-Elapsed: 2000ms - Error: httGet(url-2): Error 500
 
-==> The error that occured during calling url-2 is caught in the catch block.
+==> The error that occured during calling url-2 isn't caught anymore,
+because the return in the finally block swallows all errors.
+== Keep in mind: A return statement in a finally block may be dangerous.
 `;
   }
 
@@ -69,9 +77,6 @@ Elapsed: 2000ms - Error: httGet(url-2): Error 500
       this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data2);
       this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + data3);
       this.doLog('processing received data');
-    } catch (err) {
-      this.doLog('Elapsed: ' + (Date.now() - start) + 'ms - ' + err);
-      throw err;
     } finally {
       return;
     }
