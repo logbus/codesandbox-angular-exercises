@@ -9,6 +9,9 @@ import { ExerciseHttp1b } from './exercises/exercise-http-1b';
 import { ExerciseHttp2 } from './exercises/exercise-http-2';
 import { ExerciseHttp3 } from './exercises/exercise-http-3';
 import { ExerciseHttp4 } from './exercises/exercise-http-4';
+import { ExerciseFalsyTruthy } from './exercises/exercise-falsy-truthy';
+import { ExerciseHttp4a } from './exercises/exercise-http-4a';
+import { ExerciseHttp4b } from './exercises/exercise-http-4b';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +20,7 @@ import { ExerciseHttp4 } from './exercises/exercise-http-4';
 })
 export class AppComponent {
   public readonly exercises: Array<Exercise> = [
+    new ExerciseFalsyTruthy(),
     new ExercisePromise1(),
     new ExerciseAsync1(),
     new ExerciseAsync2(),
@@ -25,7 +29,9 @@ export class AppComponent {
     new ExerciseHttp1b(),
     new ExerciseHttp2(),
     new ExerciseHttp3(),
-    new ExerciseHttp4()
+    new ExerciseHttp4(),
+    new ExerciseHttp4a(),
+    new ExerciseHttp4b()
   ];
   public currentExercise: Exercise;
 }

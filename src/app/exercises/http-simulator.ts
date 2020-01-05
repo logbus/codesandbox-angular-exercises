@@ -7,7 +7,7 @@ export class HttpSimulator {
 
   public static httpGetWithError(url: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-      setTimeout(() => reject(new HttpError('httGet: Error 500')), 2000);
+      setTimeout(() => reject(new HttpError('httGet(' + url + '): Error 500')), 2000);
     });
   }
 }

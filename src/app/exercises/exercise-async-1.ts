@@ -21,13 +21,13 @@ public run() {
   this.x = 0;
   this.compute();
   this.x += 1;
-  this.doLog("run() x = " + this.x);
+  this.doLog('run() x = ' + this.x);
 }
 
 private async compute() {
   this.x += await 2;
-  this.doLog("compute() x = " + this.x);
-};
+  this.doLog('compute() x = ' + this.x);
+}
 `;
     this.solutionUrl = null;
     this.solution = `run() x = 1
