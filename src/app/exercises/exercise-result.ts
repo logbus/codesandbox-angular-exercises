@@ -13,6 +13,44 @@ Now you can see from the method signature that an error is possible.
 Using an Error or an Error child class gives us the stack trace as an additional information.
 
 ==> Don't use strings as errors, always an Error or a child class. 
+
+Here is the Result class we use:
+
+export class Result<O, E extends Error> {
+  private constructor(private okValue: O, private errorValue: E) {}
+
+  public static ok<O, E extends Error>(okValue: O) {
+    return new Result<O, E>(okValue, null);
+  }
+
+  public static err<O, E extends Error>(errorValue: E) {
+    return new Result<O, E>(null, errorValue);
+  }
+
+  public get(handleError: (errorValue: E) => O): O {
+    if (this.okValue === null) {
+      return handleError(this.errorValue);
+    } else {
+      return this.okValue;
+    }
+  }
+
+  public isOk(): boolean {
+    return this.okValue !== null;
+  }
+
+  public isError(): boolean {
+    return this.errorValue !== null;
+  }
+
+  public getValue(): O {
+    return this.okValue;
+  }
+
+  public getError(): E {
+    return this.errorValue;
+  }
+}
 `;
     this.infoUrl = null;
     this.infoUrlName = null;
@@ -55,7 +93,6 @@ private doItWithError(): Result<string, SpecialError> {
 
   public run() {
     const result1 = this.doItOk();
-    result1.flatMapOk(value => this.doLog(value)).flatMapErr(error => this.doLog(error));
     this.doLog(result1.isOk() ? result1.getValue() : result1.getError());
     const result2 = this.doSomeOk();
     this.doLog(result2.isOk() ? result2.getValue() : result2.getError());
