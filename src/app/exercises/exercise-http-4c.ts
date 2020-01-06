@@ -12,7 +12,35 @@ export class ExerciseHttp4c extends Exercise {
 Every httpGetWithResult() call returns a Result(ok) object without error after 2000ms delay.
 Every httpGetWithError() call returns a Result(error) object after 2000ms delay.
 
-Please look at the Result Exercise first.
+This is our HttpSimulator:
+
+export class HttpSimulator {
+  public static httpGetWithResult(url: string): Promise<Result<string, HttpError>> {
+    return new Promise<Result<string, HttpError>>((resolve, reject) => {
+      setTimeout(() => resolve(Result.ok('httGet(' + url + '): Ok')), 2000);
+    });
+  }
+
+  public static httpGetWithErrorWithResult(url: string): Promise<Result<string, HttpError>> {
+    return new Promise<Result<string, HttpError>>((resolve, reject) => {
+      setTimeout(() => resolve(Result.err(new HttpError('httGet(' + url + '): Error 500'))), 2000);
+    });
+  }
+}
+
+==> Please look at the Result Exercise first.
+==> Also take a special look at the get() method of the Result class:
+
+export class Result<O, E extends Error> {
+  ...
+  public get(handleError: (errorValue: E) => O): O {
+    if (this.okValue === null) {
+      return handleError(this.errorValue);
+    } else {
+      return this.okValue;
+    }
+  }
+  ...
 `;
     this.infoUrl = null;
     this.infoUrlName = null;
@@ -41,8 +69,8 @@ Elapsed: 2000ms - httGet(url-3): Ok
 processing received data
 
 ==> All calls are done in paralell, we await all of them which is done after 2000ms.
-We can evaluate the result of each call and can process the data as needed.
-We know that each call possibly can result in an error, to which we can react. 
+    We can evaluate the result of each call and can process the data as needed.
+    We know that each call possibly can result in an error, to which we can react. 
 `;
   }
 

@@ -48,8 +48,8 @@ httpGetError(url-2) running...
 httpGet(url-3) running...
 
 ==> The error that occured during calling url-2 isn't caught anymore,
-because the return in the finally block swallows all errors.
-== Keep in mind: A return statement in a finally block may be dangerous.
+    because the return in the finally block swallows all errors.
+==> Keep in mind: A return statement in a finally block may be dangerous.
 `;
   }
 

@@ -11,6 +11,24 @@ export class ExerciseHttp4 extends Exercise {
     this.info = `This exercise uses an http simulator that simulates an http call.
 Every httpGet() call returns without error after 2000ms delay.
 Every httpGetWithError() call returns with error after 2000ms delay.
+
+This is our HttpSimulator:
+
+import { Result } from '../util/result';
+
+export class HttpSimulator {
+  public static httpGet(url: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      setTimeout(() => resolve('httGet(' + url + '): Ok'), 2000);
+    });
+  }
+
+  public static httpGetWithError(url: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      setTimeout(() => reject(new HttpError('httGet(' + url + '): Error 500')), 2000);
+    });
+  }  
+}
 `;
     this.infoUrl = null;
     this.infoUrlName = null;

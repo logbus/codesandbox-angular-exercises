@@ -39,6 +39,7 @@ processing received data
 
 All http calls are running in parallel with only 2000ms total processing time.
 ==> We process the data when all data has arrived and the code looks best compared with all versions!
+==> But we have NO error handling here!
 `;
   }
 

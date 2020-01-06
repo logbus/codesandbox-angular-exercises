@@ -28,12 +28,12 @@ Truthy = ! falsy
   this.doLog('!x.a                -> ' + !x.a);
   this.doLog('!!x.a               -> ' + !!x.a);
   this.doLog('x.a || 1            -> ' + (x.a || 1));
-  this.doLog('x.a ?? 1            -> ' + (x.a ?? 1) + '           (Typescript 3.7)');
+  this.doLog('x.a ?? 1            -> ' + (x.a ?? 1) + '     (Typescript 3.7)');
   this.doLog('x.b                 -> ' + x.b);
   this.doLog('!x.b                -> ' + !x.b);
   this.doLog('!!x.b               -> ' + !!x.b);
   this.doLog('x.b || 1            -> ' + (x.b || 1));
-  this.doLog('x.b ?? 1            -> ' + (x.b ?? 1) + '           (Typescript 3.7)');
+  this.doLog('x.b ?? 1            -> ' + (x.b ?? 1) + '     (Typescript 3.7)');
   this.doLog('x.y.z               -> ' + x.y.z);
   this.doLog('x.y?.a              -> ' + (x.y?.a)     + '   (Typescript 3.7)');
   this.doLog('x?.a?.b?.c          -> ' + (x?.a?.b?.c) + '   (Typescript 3.7)');

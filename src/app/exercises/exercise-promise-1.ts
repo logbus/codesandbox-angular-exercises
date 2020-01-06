@@ -7,10 +7,10 @@ export class ExercisePromise1 extends Exercise {
     super();
     this.name = 'Promise-1';
     this.question = 'What is logged when you call the run() method?';
-    this.info = `
+    this.info = `If you don't know what a promise is, please read the linked article.
 `;
-    this.infoUrl = null;
-    this.infoUrlName = null;
+    this.infoUrl = 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises';
+    this.infoUrlName = 'All about promises';
     this.code = `public run() {
   new Promise((resolve, reject) => {
     resolve(1);

@@ -10,6 +10,16 @@ export class ExerciseHttp1 extends Exercise {
     this.question = 'What is logged when you call the run() method?';
     this.info = `This exercise uses an http simulator that simulates an http call.
 Every httpGet() call returns without error after 2000ms delay.
+
+Here is the HttpSimulator:
+
+export class HttpSimulator {
+  public static httpGet(url: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      setTimeout(() => resolve('httGet(' + url + '): Ok'), 2000);
+    });
+  }
+}
 `;
     this.infoUrl = null;
     this.infoUrlName = null;

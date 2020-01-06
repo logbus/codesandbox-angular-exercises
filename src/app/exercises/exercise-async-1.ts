@@ -12,8 +12,11 @@ Micro tasks are only executed when the call stack is empty.
 In this example the two parts of an expression are evaluated at two different timeslots,
 the first part directly and the second part as a micro tast later.
 `;
-    this.infoUrl = 'https://www.youtube.com/watch?v=cCOL7MC4Pl0&list=WL&index=66';
-    this.infoUrlName = 'What is the event loop (Tasks, MikroTasks, Rendering)';
+    this.infoUrls = [
+      'https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await',
+      'https://www.youtube.com/watch?v=cCOL7MC4Pl0&list=WL&index=66'
+    ];
+    this.infoUrlNames = ['What is async await?', 'What is the event loop (Tasks, MikroTasks, Rendering)'];
     this.code = `private x: number;
 
 public run() {
@@ -34,7 +37,7 @@ compute() x = 2
 
 public run() {
   this.x = 0;
-  this.compute();
+  this.compute();  // When we call compute() this.x = 0, see below!
   this.x = this.x + 1;
   this.doLog("run() x = " + this.x);
 }
