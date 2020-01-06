@@ -12,6 +12,7 @@ import { ExerciseHttp4 } from './exercises/exercise-http-4';
 import { ExerciseFalsyTruthy } from './exercises/exercise-falsy-truthy';
 import { ExerciseHttp4a } from './exercises/exercise-http-4a';
 import { ExerciseHttp4b } from './exercises/exercise-http-4b';
+import { ExerciseResult } from './exercises/exercise-result';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +32,8 @@ export class AppComponent {
     new ExerciseHttp3(),
     new ExerciseHttp4(),
     new ExerciseHttp4a(),
-    new ExerciseHttp4b()
+    new ExerciseHttp4b(),
+    new ExerciseResult()
   ];
   public currentExercise: Exercise;
 }

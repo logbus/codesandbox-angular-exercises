@@ -7,8 +7,7 @@ export class ExerciseAsync2 extends Exercise {
     super();
     this.name = 'Async-2';
     this.question = 'What is logged when you call the run() method?';
-    this.info = `
-Event loop and micro tasks as results of promises.
+    this.info = `Event loop and micro tasks as results of promises.
 Micro tasks are only executed when the call stack is empty.
 In this example the two parts of an expression are evaluated at two different timeslots,
 the first part directly and the second part as a micro tast later.

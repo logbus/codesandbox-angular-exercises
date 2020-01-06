@@ -7,8 +7,7 @@ export class ExerciseFalsyTruthy extends Exercise {
     super();
     this.name = 'Falsy-Thruthy';
     this.question = 'What is logged when you call the run() method?';
-    this.info = `
-falsy = false, 0, "", null, undefined, NaN
+    this.info = `falsy = false, 0, "", null, undefined, NaN
 Truthy = ! falsy
 `;
     this.infoUrl = null;

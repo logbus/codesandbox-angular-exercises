@@ -8,8 +8,7 @@ export class ExerciseHttp4b extends Exercise {
     super();
     this.name = 'Http-4-Error-3';
     this.question = 'What is logged when you call the run() method?';
-    this.info = `
-This exercise uses an http simulator that simulates an http call.
+    this.info = `This exercise uses an http simulator that simulates an http call.
 Every httpGet() call returns without error after 2000ms delay.
 Every httpGetWithError() call returns with error after 2000ms delay.
 `;
