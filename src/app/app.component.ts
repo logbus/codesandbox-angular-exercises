@@ -14,6 +14,7 @@ import { ExerciseHttp4a } from './exercises/exercise-http-4a';
 import { ExerciseHttp4b } from './exercises/exercise-http-4b';
 import { ExerciseResult } from './exercises/exercise-result';
 import { ExerciseHttp4c } from './exercises/exercise-http-4c';
+import { ExerciseObservable1 } from './exercises/exercise-observable-1';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,8 @@ export class AppComponent {
     new ExerciseHttp4a(),
     new ExerciseHttp4b(),
     new ExerciseResult(),
-    new ExerciseHttp4c()
+    new ExerciseHttp4c(),
+    new ExerciseObservable1()
   ];
   public currentExercise: Exercise;
 }

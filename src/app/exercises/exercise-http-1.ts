@@ -11,6 +11,9 @@ export class ExerciseHttp1 extends Exercise {
     this.info = `This exercise uses an http simulator that simulates an http call.
 Every httpGet() call returns without error after 2000ms delay.
 
+http() calls in Angular return an Observable but with toPromise() Observables can be turned 
+into a Promise. Promises are easier to handle especially with async await.
+
 Here is the HttpSimulator:
 
 export class HttpSimulator {
